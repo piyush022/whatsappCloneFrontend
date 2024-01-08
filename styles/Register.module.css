@@ -1,0 +1,57 @@
+.bg {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  color: var(--col1);
+  background-image: url("/back2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom center;
+  height: 100vh;
+  padding-top: 30px;
+}
+
+.logo2 {
+  width: 14%;
+}
+.frm {
+  background-color: rgba(26, 31, 46, 0.666);
+  /* box-shadow: 0 0 16px 0 var(--col2); */
+  /* border: 2px solid var(--col3); */
+  border-radius: 25px;
+
+  padding: 35px;
+  width: 517px;
+}
+.frm h3 {
+  text-align: center;
+}
+.btnn1 {
+  background-color: #295b53 !important;
+  text-align: center;
+  border: none;
+  margin-right: 20px;
+}
+.btnn2 {
+  background-color: var(--col2) !important;
+  text-align: center;
+  border: none;
+  margin-right: 20px;
+}
+.btnn2:hover {
+  background-color: var(--col2) !important;
+}
+.btnn1:hover {
+  background-color: #295b53 !important;
+}
+
+.ftr {
+  text-align: center;
+  padding-top: 10px;
+}
+.subLogo {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  width: 10%;
+}
