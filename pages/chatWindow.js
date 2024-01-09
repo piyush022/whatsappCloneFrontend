@@ -83,7 +83,7 @@ const chatWindow = () => {
       router.push("/");
     } else {
       getChats();
-      const socketInstance = io("http://localhost:5000", {
+      const socketInstance = io(process.env.NEXT_PUBLIC_SITE_URL, {
         path: "/socket.io",
         transports: ["websocket"],
       });
@@ -128,7 +128,7 @@ const chatWindow = () => {
       user: userID,
       message: msg,
       time: currentTime,
-      useremail: username,
+      useremail: username.toLowerCase(),
       phone: phone,
     });
     setmessageList((messageList) => [

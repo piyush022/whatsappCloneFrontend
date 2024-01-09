@@ -8,6 +8,12 @@
   text-transform: capitalize;
 }
 
+.editIcon {
+  color: #2b5f54;
+  font-size: 20px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
 .container {
   max-width: 600px;
   margin: 50px auto;

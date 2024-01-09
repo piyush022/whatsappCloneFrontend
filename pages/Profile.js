@@ -6,11 +6,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { IoCameraOutline } from "react-icons/io5";
 import Header from "./components/Header";
 import { useRouter } from "next/router";
+import { MdModeEdit } from "react-icons/md";
+import axios from "axios";
+import { Toaster, toast } from "sonner";
 
 export default function Profile() {
   const [username, setusername] = useState("");
   const [userID, setuserID] = useState("");
   const [phone, setphone] = useState("");
+  const [editStatus, seteditStatus] = useState(false);
+  const [updatedUsername, setupdatedUsername] = useState("");
   const router = useRouter();
   useEffect(() => {
     const user = localStorage.getItem("userDataChatApp");
@@ -22,6 +27,18 @@ export default function Profile() {
       setuserID(JSON.parse(user)._id);
     }
   }, [router.isReady]);
+
+  async function editUsername() {
+    try {
+      if (updatedUsername != "") {
+        const result = await axios.post("", updatedUsername);
+      } else {
+        toast.warning("please provide a new username");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
   return (
     <>
       <Header />
@@ -36,12 +53,18 @@ export default function Profile() {
           <IoCameraOutline className={styles.cam} />
         </div>
         <div className={styles.details}>
-          <h3>Name</h3>
-          <p className={styles.username}>{username}</p>
+          <h3>Name </h3>
+          <p className={styles.username}>
+            {username}{" "}
+            <MdModeEdit className={styles.editIcon} onClick={editUsername} />
+          </p>
         </div>
         <div className={styles.details}>
           <h3>About</h3>
-          <p>Hey there i am using next chat !</p>
+          <p>
+            Hey there i am using next chat !{" "}
+            <MdModeEdit className={styles.editIcon} />
+          </p>
         </div>
         <div className={styles.details}>
           <h3>Phone</h3>

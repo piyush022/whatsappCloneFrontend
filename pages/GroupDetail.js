@@ -7,20 +7,30 @@ import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import Header from "./components/Header";
+import { toast } from "sonner";
+import { Spinner } from "react-bootstrap";
 
 export default function GroupDetail() {
   const [users, setusers] = useState([]);
+  const [isSubmitingLoader, setisSubmitingLoader] = useState(false);
   const [usersBackup, setusersBackup] = useState([]);
 
   const [search, setsearch] = useState("");
 
   async function getUsers() {
-    const result = await axios.get(
-      process.env.NEXT_PUBLIC_SITE_URL + "user/api/getAllUser"
-    );
-    console.log("users", result);
-    setusers(result.data.data);
-    setusersBackup(result.data.data);
+    setisSubmitingLoader(true);
+    try {
+      const result = await axios.get(
+        process.env.NEXT_PUBLIC_SITE_URL + "user/api/getAllUser"
+      );
+      console.log("users", result);
+      setusers(result.data.data);
+      setusersBackup(result.data.data);
+      setisSubmitingLoader(false);
+    } catch (err) {
+      setisSubmitingLoader(false);
+      toast.error(err);
+    }
   }
 
   useEffect(() => {
@@ -38,6 +48,21 @@ export default function GroupDetail() {
   }, []);
   return (
     <>
+      {isSubmitingLoader ? (
+        <div className="overlay">
+          <div className="spinner-container">
+            <Spinner
+              className="loaderSpinnerPiyush"
+              style={{
+                width: "100px",
+                height: "100px",
+                color: "#0a1c51fc",
+              }}
+              animation="border"
+            />
+          </div>
+        </div>
+      ) : null}
       <div className={styles.main}>
         <Header />
         <div className={styles.container}>
@@ -54,7 +79,7 @@ export default function GroupDetail() {
               <input
                 type="text"
                 className="mb-4"
-                onChange={(e) => setsearch(e.target.value)}
+                onChange={(e) => setsearch(e.target.value.toLowerCase())}
               />
               <IoIosSearch className={styles.searchIcon} />
             </div>
