@@ -16,7 +16,7 @@ export default function GroupDetail() {
 
   async function getUsers() {
     const result = await axios.get(
-      process.env.NEXT_PUBLIC_SITE_URL + "/user/api/getAllUser"
+      process.env.NEXT_PUBLIC_SITE_URL + "user/api/getAllUser"
     );
     console.log("users", result);
     setusers(result.data.data);

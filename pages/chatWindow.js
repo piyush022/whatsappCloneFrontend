@@ -152,7 +152,7 @@ const chatWindow = () => {
 
   async function getChats() {
     const data = await axios.get(
-      process.env.NEXT_PUBLIC_SITE_URL + "/chat/api/getChat"
+      process.env.NEXT_PUBLIC_SITE_URL + "chat/api/getChat"
     );
     console.log("chatData", data);
     setmessageList(data.data.data);

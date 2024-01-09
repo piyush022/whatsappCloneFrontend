@@ -27,7 +27,7 @@ export default function Home() {
     event.preventDefault();
     if (username != "" && password != "") {
       const data = await axios.post(
-        process.env.NEXT_PUBLIC_SITE_URL + "/user/api/getUser",
+        process.env.NEXT_PUBLIC_SITE_URL + "user/api/getUser",
         {
           email: username,
           password: password,
