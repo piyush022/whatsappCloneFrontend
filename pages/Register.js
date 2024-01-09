@@ -40,7 +40,7 @@ export default function Register() {
     try {
       // Add your form submission logic here
       const data = await axios.post(
-        "http://localhost:5000/user/api/createUser",
+        process.env.NEXT_PUBLIC_SITE_URL + "/user/api/createUser",
         {
           username,
           email,

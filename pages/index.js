@@ -26,10 +26,13 @@ export default function Home() {
   async function handleSubmit(event) {
     event.preventDefault();
     if (username != "" && password != "") {
-      const data = await axios.post("http://localhost:5000/user/api/getUser", {
-        email: username,
-        password: password,
-      });
+      const data = await axios.post(
+        process.env.NEXT_PUBLIC_SITE_URL + "/user/api/getUser",
+        {
+          email: username,
+          password: password,
+        }
+      );
       console.log(data);
       if (data.data.success) {
         localStorage.setItem("userDataChatApp", JSON.stringify(data.data.data));

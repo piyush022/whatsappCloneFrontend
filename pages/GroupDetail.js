@@ -15,7 +15,9 @@ export default function GroupDetail() {
   const [search, setsearch] = useState("");
 
   async function getUsers() {
-    const result = await axios.get("http://localhost:5000/user/api/getAllUser");
+    const result = await axios.get(
+      process.env.NEXT_PUBLIC_SITE_URL + "/user/api/getAllUser"
+    );
     console.log("users", result);
     setusers(result.data.data);
     setusersBackup(result.data.data);
