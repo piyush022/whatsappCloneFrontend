@@ -4,10 +4,27 @@ import { io } from "socket.io-client";
 import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { IoCameraOutline } from "react-icons/io5";
+import Header from "./components/Header";
+import { useRouter } from "next/router";
 
 export default function Profile() {
+  const [username, setusername] = useState("");
+  const [userID, setuserID] = useState("");
+  const [phone, setphone] = useState("");
+  const router = useRouter();
+  useEffect(() => {
+    const user = localStorage.getItem("userDataChatApp");
+    if (!user) {
+      router.push("/");
+    } else {
+      setusername(JSON.parse(user).username);
+      setphone(JSON.parse(user).phone);
+      setuserID(JSON.parse(user)._id);
+    }
+  }, [router.isReady]);
   return (
     <>
+      <Header />
       <div className={styles.prof}></div>
       <div className={styles.container}>
         <div className={styles.header}>
@@ -20,15 +37,15 @@ export default function Profile() {
         </div>
         <div className={styles.details}>
           <h3>Name</h3>
-          <p>John Doe</p>
+          <p className={styles.username}>{username}</p>
         </div>
         <div className={styles.details}>
           <h3>About</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <p>Hey there i am using next chat !</p>
         </div>
         <div className={styles.details}>
           <h3>Phone</h3>
-          <p>+91-1234567890</p>
+          <p>+91-{phone}</p>
         </div>
       </div>
     </>

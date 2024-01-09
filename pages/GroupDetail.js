@@ -6,7 +6,7 @@ import { io } from "socket.io-client";
 import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
-import { InputGroup, FormControl, Row, Col } from "react-bootstrap";
+import Header from "./components/Header";
 
 export default function GroupDetail() {
   const [users, setusers] = useState([]);
@@ -39,6 +39,7 @@ export default function GroupDetail() {
   return (
     <>
       <div className={styles.main}>
+        <Header />
         <div className={styles.container}>
           <div className={styles.header}>
             <img src="/user.png" alt="Group Icon" className={styles.icon} />
