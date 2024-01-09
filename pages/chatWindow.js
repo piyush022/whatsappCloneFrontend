@@ -84,7 +84,7 @@ const chatWindow = () => {
     } else {
       getChats();
       const socketInstance = io(process.env.NEXT_PUBLIC_SITE_URL, {
-        path: "/",
+        path: "/socket.io",
         transports: ["websocket"],
       });
       setsocket(socketInstance);
