@@ -20,7 +20,7 @@
   width: 100%;
   gap: 10px;
   background-color: #ededed;
-  padding: 1.4rem 1.7rem;
+  padding: 1.2rem 1.7rem;
 }
 .inputGrp input {
   border-radius: 12px;
@@ -71,7 +71,19 @@
   background-color: #ededed;
   border: 0;
 }
+.phone {
+  position: absolute;
+  font-size: 12px;
+  font-weight: 500;
+  top: 5px;
+  right: 10px;
+  color: #7d9a69;
+}
 @media (max-width: 787px) {
+  .phone {
+    top: 5.5px;
+    font-size: 10px;
+  }
   .messageList {
     margin-top: 1.4rem;
   }

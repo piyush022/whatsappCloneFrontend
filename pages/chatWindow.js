@@ -129,10 +129,17 @@ const chatWindow = () => {
       message: msg,
       time: currentTime,
       useremail: username,
+      phone: phone,
     });
     setmessageList((messageList) => [
       ...messageList,
-      { user: userID, message: msg, time: currentTime, useremail: username },
+      {
+        user: userID,
+        message: msg,
+        time: currentTime,
+        useremail: username,
+        phone: phone,
+      },
     ]);
     try {
       playAudio();
@@ -229,6 +236,13 @@ const chatWindow = () => {
                           style={{ color: color }}
                         >
                           ~{item.useremail}
+                        </span>
+                        <span
+                          className={
+                            item.user == userID ? "displayNone" : styles.phone
+                          }
+                        >
+                          {item.phone}
                         </span>
                         <span className={styles.msg}>{item.message}</span>
                         <span className={styles.time}>

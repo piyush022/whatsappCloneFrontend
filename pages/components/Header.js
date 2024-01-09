@@ -16,14 +16,14 @@ const Header = () => {
   return (
     <>
       <div className={styles.main}>
-        <Link href="/GroupInfo" className={styles.leftsec}>
+        <Link href="/GroupDetail" className={styles.leftsec}>
           <img className={styles.avatar} src="/user.png" />
           <h2>Next Group Chat</h2>
         </Link>
         <div className={styles.controls}>
           <NavDropdown title={<BsThreeDotsVertical />} id="basic-nav-dropdown">
             <NavDropdown.Item href="/Profile">View Profile</NavDropdown.Item>
-            <NavDropdown.Item href="/GroupInfo">
+            <NavDropdown.Item href="/GroupDetail">
               View Participants
             </NavDropdown.Item>
 
